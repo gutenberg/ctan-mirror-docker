@@ -20,6 +20,9 @@ RUN chmod 755 /etc/crontabs/ctan-cron /app/crons/sync_mirror.sh
 # Create directory for CTAN mirror data.
 RUN mkdir -p /var/ctan_mirror
 
+# Copy initial index.html (before synchronization).
+ADD nginx/index.html /var/ctan_mirror/index.html
+
 # Add custom Nginx conf.
 ADD nginx/default.conf /etc/nginx/conf.d/default.conf
 

@@ -4,5 +4,7 @@
 
 # Start the cron daemon.
 crond -f -l 2 &
+# Init first synchronization.
+/app/crons/sync_mirror.sh &
 # Launch Nginx in foreground.
 nginx -g "daemon off;"
