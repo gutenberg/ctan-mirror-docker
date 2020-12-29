@@ -1,5 +1,2 @@
-# TODO Change synchronicity
-# Set it randomly: prefix with
-# sleep $[RANDOM\%179] ;
-# See https://ctan.org/mirrors/register?lang=en
-*/30 * * * * /app/crons/sync_mirror.sh > /proc/1/fd/1 2>/proc/1/fd/2
+# TODO Allows to provide synchronicity by ENV
+42 6,12,18,23 * * * sleep $[RANDOM\%179] ; /app/crons/sync_mirror.sh > /proc/1/fd/1 2>/proc/1/fd/2
