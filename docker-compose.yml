@@ -1,0 +1,12 @@
+version: "3"
+services:
+  ctan_mirror:
+    # Build with Dockerfile in current directory,
+    # plus the current directory as context.
+    build: .
+    ports:
+     - "8383:80"
+    # volumes:
+    # Optionnaly mount CTAN mirror data, that is synchronized
+    # by the Docker container cron script(s).
+    #  - ./ctan_mirror:/var/ctan_mirror
