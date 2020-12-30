@@ -1,2 +1,0 @@
-# TODO Allows to provide synchronicity by ENV
-42 6,12,18,23 * * * sleep $[RANDOM\%179] ; /app/crons/sync_mirror.sh > /proc/1/fd/1 2>/proc/1/fd/2

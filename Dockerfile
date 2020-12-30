@@ -1,21 +1,20 @@
 FROM nginx:alpine
 LABEL maintainer="Yoan Tournade <y@yoantournade.com>"
 
+ENV CTAN_RSYNC_MIRROR="rsync.dante.ctan.org/CTAN"
+ENV SYNC_CRON_PERIOD="42 6,12,18,23 * * *"
+ENV RANDOM_MODULO="179"
+
 RUN apk add --no-cache \
     rsync \
     bash
-    # openssh
-
-# Add crontab file in the cron directory.
-ADD cron/crontab /etc/crontabs/ctan-cron
-RUN crontab /etc/crontabs/ctan-cron
 
 # Add cron script(s).
 RUN mkdir -p /app/crons
 ADD cron/sync_mirror.sh /app/crons/sync_mirror.sh
 
-# Give execution rights on the cron job
-RUN chmod 755 /etc/crontabs/ctan-cron /app/crons/sync_mirror.sh
+# Give execution rights on the cron scripts.
+RUN chmod 755 /app/crons/sync_mirror.sh
 
 # Create directory for CTAN mirror data.
 RUN mkdir -p /var/ctan_mirror

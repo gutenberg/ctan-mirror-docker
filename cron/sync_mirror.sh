@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RSYNC_MIRROR="rsync.dante.ctan.org/CTAN"
+RSYNC_MIRROR="$CTAN_RSYNC_MIRROR"
 RSYNC_TO_DIR="/var/ctan_mirror"
 
 echo "Synching CTAN mirror from $RSYNC_MIRROR... (@`date`)"
