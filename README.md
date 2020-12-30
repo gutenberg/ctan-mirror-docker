@@ -21,7 +21,7 @@ You can then access the mirror on http://localhost:8080.
 ### Options
 
 
-| Env variable   |   Default Value  |  Meaning |
+| Env variable   |   Meaning  | Default Value  |
 |----------|-------------|------|
 | `CTAN_RSYNC_MIRROR` |  The rsync mirror URI to sync from | `rsync.dante.ctan.org/CTAN` |
 | `SYNC_CRON_PERIOD` | The rsync cron periodicity | `42 6,12,18,23 * * *` |
