@@ -14,6 +14,10 @@ Run with Docker, binding on port `8080`:
 docker run -p 8080:80 gutenberg/ctan-mirror
 ```
 
+You can then access the mirror on http://localhost:8080.
+
+> Note: for a server deployment, we suggest you launch the container a localhost port - and then reverse-proxy it to the domain name of your choice (eg. [Nginx](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/); [Apache2](https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html)).
+
 ### Options
 
 
