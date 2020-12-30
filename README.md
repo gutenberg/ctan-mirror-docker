@@ -32,6 +32,12 @@ For eg., to launch the CTAN mirror on port `8282`, synchronizing each day at 3 a
 docker run -p 8282:80 -e SYNC_CRON_PERIOD="0 3 * * *" -v ./ctan_mirror:/var/ctan_mirror gutenberg/ctan-mirror
 ```
 
+### Persistency
+
+To enable persistency of the synchronized CTAN data (and avoid losing the data on the container restarts), you should mount the container `/var/ctan_mirror` directory. You have two main choices:
+* mount it to a host directory, for eg. with `-v /var/my_host_directory_for_ctan:/var/ctan_mirror`
+* use a named [Docker volume](https://docs.docker.com/storage/volumes/), for eg. with `my_named_volume_ctan_mirror:/var/ctan_mirror`
+
 ### Building the image from code
 
 Build image with Docker:
@@ -42,7 +48,7 @@ docker build -t gutenberg/ctan-mirror .
 
 ## Resources
 
-* https://ctan.org/mirrors/register?lang=en
+* Publishing a new CTAN mirror: https://ctan.org/mirrors/register?lang=en
 
 ## Credits
 
