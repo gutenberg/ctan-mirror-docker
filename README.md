@@ -20,12 +20,17 @@ You can then access the mirror on http://localhost:8080.
 
 ### Options
 
-
 | Env variable   |   Meaning  | Default Value  |
 |----------|-------------|------|
 | `CTAN_RSYNC_MIRROR` |  The rsync mirror URI to sync from | `rsync.dante.ctan.org/CTAN` |
 | `SYNC_CRON_PERIOD` | The rsync cron periodicity | `42 6,12,18,23 * * *` |
 | `RANDOM_MODULO` | Random modulo used to differ the sync script (used with `$[RANDOM%<RANDOM_MODULO>]`) | `179` |
+
+For eg., to launch the CTAN mirror on port `8282`, synchronizing each day at 3 am and mounting the archive directory to `./ctan_mirror`, you can use:
+
+```sh
+docker run -p 8282:80 -e SYNC_CRON_PERIOD="0 3 * * *" -v ./ctan_mirror:/var/ctan_mirror gutenberg/ctan-mirror
+```
 
 ### Building the image from code
 
