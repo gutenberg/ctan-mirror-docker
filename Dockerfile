@@ -28,4 +28,5 @@ ADD nginx/default.conf /etc/nginx/conf.d/default.conf
 # Copy entrypoint script.
 ADD entrypoint.sh /etc/entrypoint.sh
 
+WORKDIR "/var/ctan_mirror"
 CMD ["sh", "/etc/entrypoint.sh"]
