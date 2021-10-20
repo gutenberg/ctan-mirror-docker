@@ -2,6 +2,14 @@
 # We launch both cron scripts and Nginx in the same
 # container for user simplicity.
 
+# When the /var/ctan_mirror directory is mounted as a volume,
+# its content can be empty at first start.
+# Thus we copy the index.html again here (see also Dockerfile).
+if [ ! -f "/var/ctan_mirror/index.html" ]; then
+    echo "Copying index.html"
+    cp /app/index.html /var/ctan_mirror/index.html
+fi
+
 # We install crontab at startup to allow for customizable
 # periodicity. (through an env variable)
 # Add crontab file in the cron directory.

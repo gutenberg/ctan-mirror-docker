@@ -21,6 +21,9 @@ RUN mkdir -p /var/ctan_mirror
 
 # Copy initial index.html (before synchronization).
 ADD nginx/index.html /var/ctan_mirror/index.html
+# Also put it in another directory so it can be copied
+# at entrypoint when the directory is mounted (and thus empty).
+ADD nginx/index.html /app/index.html
 
 # Add custom Nginx conf.
 ADD nginx/default.conf /etc/nginx/conf.d/default.conf
